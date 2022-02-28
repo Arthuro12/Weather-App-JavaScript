@@ -1,4 +1,4 @@
-import arrDayInOrder from "./utilities/time.js";
+import copyOfArrDayOfWeek from "./utilities/time.js";
 
 const APIKEY = '6c93938e0526d05dcb4a912cd5e913a7';
 
@@ -30,7 +30,8 @@ if(navigator.geolocation)
 
 function getAPI(longitude, latitude)
 {
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=de&appid=${APIKEY}`)
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=de&appid=${APIKEY}`;
+    fetch(url)
     .then((response) =>
     {
         //Gibt das Ergenis in JSON-Format aus
@@ -50,10 +51,10 @@ function getAPI(longitude, latitude)
         //Aktuelle Uhrzeit
         let currentHour = new Date().getHours();
 
-        //Stunde in Intervallen von 3
+        //Stunde in Intervallen von 4
         for (let i = 0; i < hour.length; i++)
         {
-            let nextHour = currentHour + (i * 3);
+            let nextHour = currentHour + (i * 4);
             if (nextHour > 24)
             {
                 hour[i].innerText = nextHour - 24 + " h";
@@ -68,19 +69,19 @@ function getAPI(longitude, latitude)
 
         for(let i = 0; i < temperatureOfHour.length; i++)
         {
-            temperatureOfHour[i].innerText = `${Math.trunc(resultAPI.hourly[i * 3].temp)}°`;
+            temperatureOfHour[i].innerText = `${Math.trunc(resultAPI.hourly[i * 4].temp)}°`;
         }
 
         //Tage
-        for(let i = 0; i < arrDayInOrder.length; i++)
+        for(let i = 0; i < copyOfArrDayOfWeek.length; i++)
         {
-            day[i].innerText = arrDayInOrder[i].slice(0,3);
+            day[i].innerText = copyOfArrDayOfWeek[i].slice(0, 3);
         }
 
         //Temperaturen für Tage
         for(let i = 0; i < 7; i++)
         {
-            temperatureOfDay[i].innerText = `${Math.trunc(resultAPI.daily[i + 1].temp.day)}°`;
+            temperatureOfDay[i].innerText = `${Math.trunc(resultAPI.daily[i].temp.max)}°`;
         }
 
         //Dynamisches Ikon
