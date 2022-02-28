@@ -12,7 +12,7 @@ body {
 /*Zentriertes Design mit Grenzen bei 700px*/
 .container {
     display: grid;
-    height: 800px;
+    height: 900px;
     grid-template: 100px 300px 100px 100px / repeat(7, 100px);
     background: linear-gradient(45deg, orange, rgb(245, 223, 182));
     margin: auto;
@@ -36,7 +36,7 @@ h1 {
     margin-left: 12em;
 }
 
-.logo-icon img {
+.logo-block img {
     width: 200px;
     margin-right: 10em;
 }
@@ -50,32 +50,37 @@ h1 {
     font-size: 40px;
 }
 
-.block-hour-forecast,
-.block-day-forecast {
+.block-hour-forecast {
     display: grid;
     grid-template: 100px / repeat(7, 100px);
 }
 
 .block-hour-forecast {
-    grid-area: 3 / 1 / 4 / -1;
+    grid-area: 3 / 1 / 3 / -1;
     border-bottom: solid 1px white;
 
 }
 
 .block-day-forecast {
-    grid-area: 4 / 1 / 4 / -1;
+    margin-top: 32em;
 }
 
-.block-hour,
 .block-day {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.block-day p {
+    margin-left: 20em;
+}
+
+.block-hour {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
 
-}
-
-.block-hour:not(:last-child) {
-    border-right: 1px solid white;
 }
