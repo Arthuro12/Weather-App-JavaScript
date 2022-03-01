@@ -79,7 +79,7 @@ function getAPI(longitude, latitude)
         }
 
         //Temperaturen für Tage
-        for(let i = 0; i < 7; i++)
+        for(let i = 0; i < 8; i++)
         {
             temperatureOfDay[i].innerText = `${Math.trunc(resultAPI.daily[i].temp.max)}°`;
         }

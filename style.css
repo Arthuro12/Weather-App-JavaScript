@@ -16,7 +16,7 @@ body {
     grid-template: 100px 300px 100px 100px / repeat(7, 100px);
     background: linear-gradient(45deg, orange, rgb(245, 223, 182));
     margin: auto;
-    width: 700px;
+    width: 800px;
     border-radius: 20px;
 }
 
